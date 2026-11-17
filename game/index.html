@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solmar Bay — an open-world crime story</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<canvas id="game" aria-label="Solmar Bay: drive and explore an open-world coastal city, take missions from Rosa's garage, and stay ahead of the SBPD"></canvas>
+
+<!-- Top-left: current mission + objective -->
+<div id="mission-panel" class="panel">
+  <div id="mission-name">SOLMAR BAY</div>
+  <div id="objective">Go to Rosa&rsquo;s garage — next job: First Delivery</div>
+</div>
+
+<!-- Top-right: cash, wanted stars, health -->
+<div id="status-panel" class="panel">
+  <div id="cash">$250</div>
+  <div id="goal">SAVE THE GARAGE — $50,000 GOAL · 0%</div>
+  <div id="postcards">✉ POSTCARDS 0 / 10</div>
+  <div id="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+  <div id="health-bar"><div id="health-fill"></div><span id="health-text">100</span></div>
+</div>
+
+<!-- Bottom-right: minimap + speed -->
+<div id="map-panel" class="panel">
+  <canvas id="minimap" width="180" height="180"></canvas>
+  <div id="speed-row"><span id="speed"></span> <span id="speed-unit"></span></div>
+</div>
+
+<!-- Bottom-left: ammo + controls hint -->
+<div id="ammo-panel" class="panel">
+  <div id="ammo">AMMO 12 / 12</div>
+</div>
+<div id="hint" class="panel">
+  WASD move / drive &nbsp;·&nbsp; Mouse look &nbsp;·&nbsp; Click shoot &nbsp;·&nbsp; R reload<br>
+  E enter car / start mission &nbsp;·&nbsp; Shift run &nbsp;·&nbsp; Space handbrake<br>
+  P pause &nbsp;·&nbsp; M mute &nbsp;·&nbsp; Right mouse aim
+</div>
+
+<!-- Centre: crosshair, prompt, banner -->
+<div id="crosshair"><div class="ch-dot"></div><div class="ch-ring"></div></div>
+<div id="prompt"></div>
+<div id="banner"><div id="banner-title"></div><div id="banner-text"></div></div>
+
+<!-- Bottom-centre: dialogue -->
+<div id="dialogue"><span id="dialogue-speaker">Rosa</span><span id="dialogue-text"></span></div>
+
+<!-- Arrest progress -->
+<div id="arrest-wrap"><div id="arrest-label">ARRESTED IN…</div><div id="arrest-bar"><div id="arrest-fill"></div></div></div>
+
+<!-- One-line toast -->
+<div id="toast"></div>
+
+<!-- Damage vignette -->
+<div id="damage-flash"></div>
+
+<!-- End screens -->
+<div id="wasted" class="end-screen"><div class="end-title">WASTED</div><div class="end-sub">Solmar General is patching you up…</div></div>
+<div id="busted" class="end-screen"><div class="end-title">BUSTED</div><div class="end-sub">The SBPD has you in custody…</div></div>
+
+<!-- Start screen -->
+<div id="start-screen">
+  <div id="start-inner">
+    <div id="game-kicker">AN OPEN-WORLD CRIME STORY</div>
+    <h1 id="game-title">SOLMAR BAY</h1>
+    <div id="game-subtitle">a sun-soaked open-world crime story</div>
+    <p id="story-intro"></p>
+    <div id="start-buttons">
+      <button id="btn-new" class="menu-btn primary">NEW GAME</button>
+      <button id="btn-continue" class="menu-btn">CONTINUE</button>
+    </div>
+    <div id="start-controls">
+      <b>Drive</b> WASD &nbsp;·&nbsp; <b>Look</b> mouse &nbsp;·&nbsp; <b>Shoot</b> click &nbsp;·&nbsp; <b>Reload</b> R<br>
+      <b>Enter car / mission</b> E &nbsp;·&nbsp; <b>Run</b> Shift &nbsp;·&nbsp; <b>Handbrake</b> Space &nbsp;·&nbsp; <b>Pause</b> P
+    </div>
+    <div id="start-note">Missions start at Rosa&rsquo;s garage on Marlin Street. Progress saves automatically.</div>
+  </div>
+</div>
+
+<!-- Pause menu -->
+<div id="pause-menu">
+  <div id="pause-inner">
+    <h2>PAUSED</h2>
+    <button id="btn-resume" class="menu-btn primary">RESUME</button>
+    <button id="btn-restart" class="menu-btn">RESTART STORY</button>
+    <button id="btn-mute" class="menu-btn">Sound: ON</button>
+    <button id="btn-quit" class="menu-btn">QUIT TO MENU</button>
+    <div id="pause-note">Progress is saved automatically.</div>
+  </div>
+</div>
+
+<div id="fatal"></div>
+
+<script src="./vendor/three.min.js"></script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
